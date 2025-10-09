@@ -130,8 +130,8 @@ wordle6 = {
 }
 
 wordle7 = {
-    board: [],
-    state: []   // 0: letter not in word, 1: letter at different position in word, 2: letter correct
+    board: ["swear", "field"],
+    state: ["00200", "00200"]   // 0: letter not in word, 1: letter at different position in word, 2: letter correct
 }
 
-main(wordle6).catch(console.log);
+main(wordle7).catch(console.log);
