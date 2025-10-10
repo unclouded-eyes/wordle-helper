@@ -3,7 +3,8 @@ const ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm
 async function main(wordle) {
     const constraints = new Constraints(wordle);
     const possibleSolutions =  await findMatchingWords(constraints);
-    console.log(possibleSolutions);
+    //console.log(possibleSolutions);
+    return possibleSolutions;
 }
 
 function Constraints(wordle) {
@@ -134,4 +135,4 @@ wordle7 = {
     state: ["00200", "00200"]   // 0: letter not in word, 1: letter at different position in word, 2: letter correct
 }
 
-main(wordle7).catch(console.log);
+//main(wordle7).catch(console.log);
