@@ -25,7 +25,7 @@ function handleInput(event) {
     addLetterToBoard(letter);
   } else if (event.key == "Backspace" && activeColumn > 0) {
     removeLetterFromBoard();
-  } else if (event.key == "Enter" && activeColumn == 5) {
+  } else if (event.key == "Enter" && isCompleteWord(wordle[activeRow])) {
     addWordToBoard();
   }
 }
@@ -55,7 +55,7 @@ function addLetterToBoard(letter) {
   let activeCell = document.getElementById(activeRow + "," + activeColumn);
   activeCell.innerHTML = letter;
   activeCell.classList.add("filled");
-  wordle[activeRow][activeColumn].value = letter;
+  wordle[activeRow][activeColumn].value = letter.toLowerCase();
   activeColumn++;
 }
 
@@ -72,9 +72,9 @@ function removeLetterFromBoard() {
 }
 
  function addWordToBoard() {
-  activeRow++;
-  activeColumn = 0;
   callWordleHelper();
+  activeColumn = 0;
+  activeRow++;
 }
 
 function isCompleteWord(word) {
@@ -88,25 +88,14 @@ function isCompleteWord(word) {
 
 function addWordToWordle(word, wordle, index) {
   wordle.board[index] = "";
-  wordle.state[index] = ""
+  wordle.state[index] = "";
   word.forEach(letter => {
     wordle.board[index] += letter.value.toLowerCase();
-    wordle.state[index] += letter.state-1;
+    wordle.state[index] += letter.state;
   });
 }
 
 async function callWordleHelper() {
-  let currentWordle = {
-    board: [],
-    state: []
-  };
-  for (let index = 0; index < wordle.length; index++) {
-    if (isCompleteWord(wordle[index])) {
-      addWordToWordle(wordle[index], currentWordle, index);
-    } else {
-      break;
-    }
-  }
-  possibleSolutions = await main(currentWordle);
+  possibleSolutions = await wordleHelper(wordle[activeRow]);
   document.getElementById("solutions-box").innerHTML = possibleSolutions.join("\n");
 }

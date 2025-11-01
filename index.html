@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="./main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bevan&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bevan&family=Libre+Franklin:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@400&display=swap" rel="stylesheet">
     <script src="wordleHelper.js" async></script>
     <script src="main.js" async></script>
   </head>
@@ -62,8 +63,10 @@
         </div>
       </div>
       <div id="suggestions">
-        <h2>Remaining Possible Solutions</h2>
-        <textarea name="solutions-box" id="solutions-box"></textarea>
+        <h2>Possible Solutions</h2>
+        <div id="hide-scrollbar-overflow">
+          <textarea name="solutions-box" id="solutions-box" readonly></textarea>
+        </div>
       </div>
     </main>
   </body>
